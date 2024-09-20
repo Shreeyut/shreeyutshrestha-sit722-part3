@@ -1,0 +1,27 @@
+#version: '3'
+services:
+
+  book_catalog:
+    image: book-catalog
+    build:
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    container_name: book-catalog
+    ports:
+     - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://proj3_gsqi_user:h8AxE2eeGbf3GtM4jk397UkcWZ9wNZ4I@dpg-crmmd09u0jms7396fff0-a.oregon-postgres.render.com/proj3_gsqi
+    restart: "no"
+
+
+  inventory_management:
+    image: inventory-management
+    build: 
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    container_name: inventory-management
+    ports:
+     - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://proj3_gsqi_user:h8AxE2eeGbf3GtM4jk397UkcWZ9wNZ4I@dpg-crmmd09u0jms7396fff0-a.oregon-postgres.render.com/proj3_gsqi
+    restart: "no"
